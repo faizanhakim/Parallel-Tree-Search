@@ -22,13 +22,6 @@
 #define MAX_PAR_CHILDREN 2
 #endif
 
-// A parallel tree search that keeps the existing file structure and public API.
-// Key improvements:
-//  - Cooperative cancellation via a single atomic 'found' flag.
-//  - Task granularity control via cutoff depth and limited fan-out.
-//  - No reliance on per-node 'visited' (trees don't need it), which reduces contention.
-//  - Bounded task creation; remaining children are processed sequentially to keep locality high.
-//  - Correct nodesVisited counting.
 template <typename T>
 class ParallelTreeSearch
 {
